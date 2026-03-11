@@ -1,4 +1,16 @@
 import { Link } from 'react-router-dom'
+import memberLogo1 from '../../image/unilever.png'
+import memberLogo2 from '../../image/haleeb.jpeg'
+import memberLogo3 from '../../image/pakola.png'
+import memberLogo4 from '../../image/nestle.png'
+import memberLogo5 from '../../image/dalda.png'
+import memberLogo6 from '../../image/gourment.png'
+import memberLogo7 from '../../image/adams.jpeg'
+import memberLogo8 from '../../image/fauji.png'
+import memberLogo9 from '../../image/dairyland.jpeg'
+import memberLogo10 from '../../image/fries.png'
+import memberLogo11 from '../../image/tetra.jpeg'
+import memberLogo12 from '../../image/shak.png'
 
 const stats = [
   { value: '25+', label: 'Years Experience' },
@@ -34,11 +46,19 @@ const services = [
   },
 ]
 
-const process = [
-  { step: '01', title: 'Land Preparation', text: 'Soil analysis and seasonal readiness planning.' },
-  { step: '02', title: 'Seed & Feed Setup', text: 'High-quality seed selection and nutrition setup.' },
-  { step: '03', title: 'Growth Monitoring', text: 'Continuous crop and animal health monitoring.' },
-  { step: '04', title: 'Harvest & Supply', text: 'Safe harvesting and fast farm-to-customer delivery.' },
+const members = [
+  { name: 'Unilever', image: memberLogo1, href: 'https://www.unilever.pk/' },
+  { name: 'Haleeb', image: memberLogo2, href: 'https://haleebfoods.com/' },
+  { name: 'Pakola', image: memberLogo3, href: 'https://pakola.com.pk/' },
+  { name: 'Nestle', image: memberLogo4, href: 'https://www.nestle.pk/' },
+  { name: 'Dalda', image: memberLogo5, href: 'https://www.daldafoods.com/' },
+  { name: 'Gourmet Foods', image: memberLogo6, href: 'https://gourmetfoods.pk/' },
+  { name: "Adam's", image: memberLogo7, href: 'https://www.adams.pk/' },
+  { name: 'Fauji Foods', image: memberLogo8, href: 'https://www.faujifoods.com/' },
+  { name: 'Dairyland', image: memberLogo9, href: '' },
+  { name: 'FrieslandCampina', image: memberLogo10, href: 'https://www.frieslandcampina.com/pk/' },
+  { name: 'Tetra Pak', image: memberLogo11, href: 'https://www.tetrapak.com/en-pk' },
+  { name: 'Shakarganj', image: memberLogo12, href: 'https://shakarganjfood.com/' },
 ]
 
 const products = [
@@ -179,24 +199,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="site-container">
-          <div className="section-heading center">
-            <p className="section-tag">Work Process</p>
-            <h2>Simple Steps We Follow</h2>
-          </div>
-          <div className="home-process-grid">
-            {process.map((item) => (
-              <article key={item.step}>
-                <span>{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section alt-bg">
         <div className="site-container">
           <div className="section-heading center">
@@ -249,6 +251,45 @@ export default function Home() {
                 <Link to="/blog">Read More</Link>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="site-container">
+          <div className="section-heading center">
+            <p className="members-kicker">OUR MEMBERS</p>
+          </div>
+
+          <div className="members-grid" aria-label="Our Members">
+            {members.map((member) => (
+              <div key={member.name} className="member-cell">
+                {member.href ? (
+                  <a
+                    className="member-link"
+                    href={member.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${member.name} website`}
+                    title={`Visit ${member.name}`}
+                  >
+                    <img src={member.image} alt={member.name} loading="lazy" />
+                  </a>
+                ) : (
+                  <img src={member.image} alt={member.name} loading="lazy" />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="members-actions">
+            <Link
+              to="/"
+              className="members-btn"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              View All Members
+            </Link>
           </div>
         </div>
       </section>

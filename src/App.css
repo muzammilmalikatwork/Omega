@@ -780,6 +780,223 @@
   color: var(--green-700);
 }
 
+.blog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 2.2rem;
+  align-items: start;
+}
+
+.blog-entry {
+  background: #fff;
+  border: 1px solid #e5ece3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(22, 36, 22, 0.06);
+}
+
+.blog-entry + .blog-entry {
+  margin-top: 1.6rem;
+}
+
+.blog-entry img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.blog-entry-body {
+  padding: 1.35rem 1.35rem 1.5rem;
+}
+
+.blog-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--text-700);
+  font-size: 0.92rem;
+}
+
+.blog-entry-meta span + span {
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.blog-entry-meta span + span::before {
+  content: '';
+  position: absolute;
+  left: 0.25rem;
+  top: 0.6rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #a6b7ab;
+}
+
+.blog-entry-title {
+  margin: 0.7rem 0 0.6rem;
+  font-size: clamp(1.35rem, 2.3vw, 1.8rem);
+  color: #1f2937;
+}
+
+.blog-entry-excerpt {
+  margin: 0;
+  color: var(--text-700);
+  line-height: 1.7;
+  max-width: 80ch;
+}
+
+.blog-readmore {
+  margin-top: 1.05rem;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.7rem 1.05rem;
+  background: var(--gold-500);
+  color: #132916;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.blog-readmore:hover {
+  filter: brightness(0.96);
+}
+
+.blog-sidebar {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.blog-widget {
+  background: #fff;
+  border: 1px solid #e5ece3;
+  border-radius: 16px;
+  padding: 1.15rem 1.1rem;
+  box-shadow: 0 10px 25px rgba(22, 36, 22, 0.05);
+}
+
+.blog-widget h3 {
+  margin: 0 0 0.9rem;
+  font-size: 1.1rem;
+}
+
+.blog-search {
+  display: grid;
+  grid-template-columns: 1fr 92px;
+  border: 1px solid #d7e3d5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.blog-search input {
+  border: 0;
+  padding: 0.75rem 0.85rem;
+  outline: none;
+}
+
+.blog-search button {
+  border: 0;
+  background: var(--gold-500);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.blog-categories,
+.blog-recent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-categories li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #eef3ed;
+  color: var(--text-700);
+}
+
+.blog-categories li:last-child {
+  border-bottom: 0;
+}
+
+.blog-recent li + li {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eef3ed;
+}
+
+.blog-recent-title {
+  display: block;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.blog-recent-date {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--text-700);
+  font-size: 0.92rem;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.blog-tag {
+  border: 1px solid #d2e0d0;
+  background: #f8fbf7;
+  color: var(--green-700);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.blog-tag:hover {
+  background: #eef7ec;
+}
+
+.blog-pagination {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+
+.blog-page-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid #d7e3d5;
+  background: #fff;
+  color: #1f2937;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.blog-page-btn.active {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: #fff;
+}
+
+.blog-page-btn:hover {
+  border-color: #b9cbbd;
+}
+
+@media (max-width: 980px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-search {
+    grid-template-columns: 1fr 110px;
+  }
+}
+
 .home-video-card {
   position: relative;
 }
@@ -1336,6 +1553,99 @@
   color: var(--text-700);
 }
 
+.members-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.members-kicker::before {
+  content: '';
+  width: 4px;
+  height: 18px;
+  background: #6bbf3b;
+  border-radius: 2px;
+}
+
+.members-grid {
+  margin-top: 1.35rem;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  background: #fff;
+  border: 1px solid #e6e6e6;
+}
+
+.member-cell {
+  position: relative;
+  border-right: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 2.2rem 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.member-cell img {
+  width: min(140px, 100%);
+  height: 64px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.92;
+}
+
+.member-link {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.member-link:focus-visible {
+  outline: 2px solid #6bbf3b;
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.member-cell::after {
+  display: none;
+}
+
+/* No + marker on last column or last row (6 columns layout, 12 items). */
+.member-cell:nth-child(6n)::after,
+.member-cell:nth-last-child(-n + 6)::after {
+  display: none;
+}
+
+.members-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.35rem;
+}
+
+.members-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #6bbf3b;
+  color: #6bbf3b;
+  background: transparent;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.9rem 1.5rem;
+  border-radius: 4px;
+  min-width: 220px;
+}
+
+.members-btn:hover {
+  background: rgba(107, 191, 59, 0.08);
+}
+
 .home-testimonial-grid article {
   position: relative;
 }
@@ -1447,6 +1757,14 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  .members-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .member-cell::after {
+    display: none;
+  }
+
   .home-services-grid > article,
   .home-products-grid > article,
   .home-testimonial-grid > article {
@@ -1478,6 +1796,10 @@
   .home-stats-grid,
   .home-blog-grid {
     grid-template-columns: 1fr;
+  }
+
+  .members-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .home-services-grid > article,
