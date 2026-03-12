@@ -6,6 +6,7 @@ export default function Header() {
   const [pagesOpen, setPagesOpen] = useState(false)
   const location = useLocation()
 
+  const aboutActive = ['/about', '/ceo-message'].includes(location.pathname)
   const pagesActive = ['/gallery', '/team', '/pricing', '/faq', '/not-found'].includes(location.pathname)
 
   const closeMenu = () => {
@@ -44,9 +45,18 @@ export default function Header() {
             <NavLink to="/" end onClick={closeMenu}>
               Home
             </NavLink>
-            <NavLink to="/about" onClick={closeMenu}>
-              About Us
-            </NavLink>
+
+            <div className="nav-dropdown">
+              <NavLink to="/about" className={`nav-dropdown-toggle ${aboutActive ? 'active' : ''}`} onClick={closeMenu}>
+                About Us
+              </NavLink>
+              <div className="dropdown-menu">
+                <NavLink to="/ceo-message" onClick={closeMenu}>
+                  CEO Message
+                </NavLink>
+              </div>
+            </div>
+
             <NavLink to="/services" onClick={closeMenu}>
               Services
             </NavLink>
@@ -54,7 +64,9 @@ export default function Header() {
               <button
                 className={`nav-dropdown-toggle ${pagesActive ? 'active' : ''}`}
                 type="button"
-                onClick={() => setPagesOpen((value) => !value)}
+                onClick={() => {
+                  setPagesOpen((value) => !value)
+                }}
                 aria-expanded={pagesOpen}
               >
                 Pages

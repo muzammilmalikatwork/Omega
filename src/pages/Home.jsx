@@ -21,29 +21,24 @@ const stats = [
 
 const services = [
   {
-    title: 'Crop Cultivation',
+    title: 'Unit 1',
     text: 'Season-based farming with smart planning and controlled irrigation.',
     image:
       'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    title: 'Dairy Production',
+    title: 'Unit 2',
     text: 'Fresh milk, butter, and yogurt processed with strict hygiene standards.',
     image:
       'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1200&q=80',
   },
   {
-    title: 'Livestock Care',
+    title: 'Unit 3',
     text: 'Healthy feed programs, shelter maintenance, and regular veterinary checks.',
     image:
       'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1200&q=80',
   },
-  {
-    title: 'Form Units',
-    text: 'There will be three units. Unit 1 , unit 2 , unit 3.',
-    image:
-      'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=80',
-  },
+  
 ]
 
 const members = [
@@ -55,7 +50,7 @@ const members = [
   { name: 'Gourmet Foods', image: memberLogo6, href: 'https://gourmetfoods.pk/' },
   { name: "Adam's", image: memberLogo7, href: 'https://www.adams.pk/' },
   { name: 'Fauji Foods', image: memberLogo8, href: 'https://www.faujifoods.com/' },
-  { name: 'Dairyland', image: memberLogo9, href: '' },
+  { name: 'Dairyland', image: memberLogo9, href: 'https://www.dairylandltd.com/' },
   { name: 'FrieslandCampina', image: memberLogo10, href: 'https://www.frieslandcampina.com/pk/' },
   { name: 'Tetra Pak', image: memberLogo11, href: 'https://www.tetrapak.com/en-pk' },
   { name: 'Shakarganj', image: memberLogo12, href: 'https://shakarganjfood.com/' },

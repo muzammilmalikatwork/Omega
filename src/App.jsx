@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
@@ -12,15 +13,18 @@ import Team from './pages/Team.jsx'
 import Pricing from './pages/Pricing.jsx'
 import Faq from './pages/Faq.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import CeoMessage from './pages/CeoMessage.jsx'
 
 export default function App() {
   return (
     <div className="omega-site">
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/ceo-message" element={<CeoMessage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/team" element={<Team />} />

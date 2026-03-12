@@ -5,7 +5,7 @@
   --green-500: #3e7d46;
   --gold-500: #f2bf4b;
   --cream-100: #f8f5ec;
-  --text-900: #1f2a20;
+  --text-900: #5e7560;
   --text-700: #475747;
   color: var(--text-900);
 }
@@ -75,7 +75,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: #203120;
+  background: #bdbdbd;
   margin: 5px auto;
 }
 
@@ -117,6 +117,7 @@
   font-weight: 600;
   cursor: pointer;
   padding: 0;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 

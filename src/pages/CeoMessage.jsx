@@ -13,15 +13,13 @@ const testimonials = [
   {
     name: 'Braitly Dcosta',
     role: 'Client',
-    quote:
-      'We shifted our recurring supply to Omega and saw immediate improvement in freshness and reliability.',
+    quote: 'We shifted our recurring supply to Omega and saw immediate improvement in freshness and reliability.',
     image: 'https://randomuser.me/api/portraits/men/36.jpg',
   },
   {
     name: 'Amna Raza',
     role: 'Retail Partner',
-    quote:
-      'From planning to final dispatch, their process is transparent and professional. Highly recommended.',
+    quote: 'From planning to final dispatch, their process is transparent and professional. Highly recommended.',
     image: 'https://randomuser.me/api/portraits/women/22.jpg',
   },
 ]
@@ -85,16 +83,16 @@ const steps = [
 
 const brands = ['AgriCorp', 'Farmline', 'GreenMart', 'DairyHub', 'HarvestCo', 'FreshNest']
 
-export default function About() {
+export default function CeoMessage() {
   return (
     <div className="about-template">
       <section className="services-breadcrumb about-breadcrumb" style={{ backgroundImage: `url(${aboutHeroImage})` }}>
         <div className="site-container services-breadcrumb-inner">
-          <h1>About Us</h1>
+          <h1>CEO Message</h1>
           <div className="services-crumb-pill" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
             <span>|</span>
-            <span>About Us</span>
+            <span>CEO Message</span>
           </div>
         </div>
       </section>
@@ -102,7 +100,7 @@ export default function About() {
       <section className="section">
         <div className="site-container about-template-intro">
           <div>
-            <p className="section-tag">About Us</p>
+            <p className="section-tag">CEO Message</p>
             <h2>We Have Been Milk Harvesting</h2>
             <p>
               Omega has been building dependable agriculture and dairy operations with a strong focus on quality,
@@ -116,7 +114,7 @@ export default function About() {
           <div className="about-template-image-wrap">
             <img src={aboutImage} alt="About Omega" />
             <button type="button" className="about-play-badge" aria-label="Play intro video">
-              ▶
+              â–¶
             </button>
           </div>
         </div>
@@ -218,3 +216,4 @@ export default function About() {
     </div>
   )
 }
+
