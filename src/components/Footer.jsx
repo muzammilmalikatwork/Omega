@@ -32,9 +32,9 @@ export default function Footer() {
         <div>
           <h4>Contact</h4>
           <ul>
-            <li>45 Green Valley Road, Lahore</li>
-            <li>+92 300 1112233</li>
-            <li>hello@omegafarm.com</li>
+            <li> G 4/9 Block 9 Scheme 9 Clifton-Karachi.</li>
+            <li> +92-2135867726</li>
+            <li>info@omegadairy.com.pk</li>
           </ul>
         </div>
       </div>

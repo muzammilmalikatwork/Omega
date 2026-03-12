@@ -43,26 +43,26 @@ const faqs = [
 
 const team = [
   {
-    name: 'Howard Holmes',
-    role: 'CEO & Founder',
+    name: 'Mr. Hanif Abdani',
+    role: 'Director',
     image:
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Ella Thompson',
-    role: 'Operations Lead',
+    name: 'Mr. Shamoil Abdani',
+    role: 'Director Lead',
     image:
       'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Vincent Cooper',
-    role: 'Quality Manager',
+    name: 'Mr. Abdul Qadir',
+    role: 'Director',
     image:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Danielle Bryant',
-    role: 'Supply Coordinator',
+    name: 'Mr. Ilyas Asif',
+    role: 'Director',
     image:
       'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80',
   },
@@ -102,15 +102,20 @@ export default function About() {
       <section className="section">
         <div className="site-container about-template-intro">
           <div>
-            <p className="section-tag">About Us</p>
-            <h2>We Have Been Milk Harvesting</h2>
+            <p className="section-tag"> Introduction</p>
+        
             <p>
-              Omega has been building dependable agriculture and dairy operations with a strong focus on quality,
-              hygiene, and long-term sustainability.
+              Omega Dairy (Pvt.) Ltd. is an international dairy brand delivering fresh, high-quality dairy products worldwide. 
+              Omega Dairy (Pvt.) Ltd. is a company registered in Pakistan (Under Companies Act 2017) 
+              for the purpose of Manufacturing, Producing and Dealing in Milk and related products. 
             </p>
-            <p>
-              Our team combines practical field experience with modern planning to deliver products that meet daily
-              household and business requirements.
+            <p className="section-tag"> The Company Vision</p>
+              <p>To become a leading Company in the Dairy Farm sector by applying latest machinery, technology, 
+                methods and techniques.
+            </p>
+            <p className="section-tag"> The Company Mission</p>
+              <p>To produce premium quality Milk products using Improved production, cost effective, value 
+                addition and marketing innovations for multiple benefits.
             </p>
           </div>
           <div className="about-template-image-wrap">
@@ -169,8 +174,8 @@ export default function About() {
       <section className="section alt-bg">
         <div className="site-container">
           <div className="section-heading center">
-            <p className="section-tag">Team Members</p>
-            <h2>Our Dedicated Team</h2>
+            <p className="section-tag">Directors</p>
+            <h2>Authorized Person</h2>
           </div>
           <div className="about-template-team-grid">
             {team.map((member) => (
