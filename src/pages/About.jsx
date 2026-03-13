@@ -52,19 +52,19 @@ const team = [
     name: 'Mr. Shamoil Abdani',
     role: 'Director Lead',
     image:
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'Mr. Abdul Qadir',
     role: 'Director',
     image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'Mr. Ilyas Asif',
     role: 'Director',
     image:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
   },
 ]
 

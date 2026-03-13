@@ -78,20 +78,6 @@ export default function Blog() {
               </article>
             ))}
 
-            <nav className="blog-pagination" aria-label="Pagination">
-              <button type="button" className="blog-page-btn active">
-                1
-              </button>
-              <button type="button" className="blog-page-btn">
-                2
-              </button>
-              <button type="button" className="blog-page-btn">
-                3
-              </button>
-              <button type="button" className="blog-page-btn" aria-label="Next page">
-                {'>'}
-              </button>
-            </nav>
           </div>
 
           <aside className="blog-sidebar" aria-label="Blog sidebar">

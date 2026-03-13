@@ -19,7 +19,7 @@ export default function Header() {
       <header className="topbar">
         <div className="site-container topbar-inner">
           <p>Omega Farm | Natural agriculture and dairy solutions</p>
-          <a href="tel:+923001112233">Call Us: +92 300 1112233</a>
+          <a href="tel:+923001112233">Call Us: +92-3065230410</a>
         </div>
       </header>
 

@@ -51,7 +51,7 @@ const galleryItems = [
     text: 'Daily shelter maintenance and nutrition planning for dairy herds.',
     category: 'cattles',
     image:
-      'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Farm Equipment Maintenance',

@@ -51,7 +51,7 @@ const secondaryServices = [
     title: 'Natural Feeds For Cows',
     text: 'Balanced feed plans that support healthier livestock and better milk output.',
     image:
-      'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Hand Milking Cow Milk',

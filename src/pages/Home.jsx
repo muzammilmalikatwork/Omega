@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import unit1CardImage from '../../image/c.jpg'
+import unit2CardImage from '../../image/co.jpg'
+import unit3CardImage from '../../image/cow.jpg'
 import memberLogo1 from '../../image/unilever.png'
 import memberLogo2 from '../../image/haleeb.jpeg'
 import memberLogo3 from '../../image/pakola.png'
@@ -23,20 +26,17 @@ const services = [
   {
     title: 'Unit 1',
     text: 'Season-based farming with smart planning and controlled irrigation.',
-    image:
-      'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80',
+    image: unit1CardImage,
   },
   {
     title: 'Unit 2',
     text: 'Fresh milk, butter, and yogurt processed with strict hygiene standards.',
-    image:
-      'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=1200&q=80',
+    image: unit2CardImage,
   },
   {
     title: 'Unit 3',
     text: 'Healthy feed programs, shelter maintenance, and regular veterinary checks.',
-    image:
-      'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1200&q=80',
+    image: unit3CardImage,
   },
   
 ]
@@ -79,7 +79,7 @@ const products = [
     title: 'Healthy Feed',
     text: 'Balanced nutrition for stronger livestock growth.',
     image:
-      'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1589985270958-bcb439f8f1fa?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -112,6 +112,8 @@ const posts = [
 ]
 
 export default function Home() {
+  const navigate = useNavigate()
+
   return (
     <div className="home-clean">
       <section className="home-hero">
@@ -177,19 +179,46 @@ export default function Home() {
       <section className="section alt-bg">
         <div className="site-container">
           <div className="section-heading center">
-            <p className="section-tag">Our Services</p>
-            <h2>Professional Farming Services</h2>
+            <h2 className="section-tag">Our Farms</h2>
           </div>
           <div className="home-services-grid">
-            {services.map((service) => (
-              <article key={service.title} className="home-service-card">
-                <img src={service.image} alt={service.title} />
-                <div>
-                  <h3>{service.title}</h3>
-                  <p>{service.text}</p>
-                </div>
-              </article>
-            ))}
+            {services.map((service) => {
+              const unitMatch = service.title.match(/^Unit\s+(\d+)$/i)
+              const unitPath = unitMatch ? `/unit-${unitMatch[1]}` : null
+
+              return (
+                <article
+                  key={service.title}
+                  className={`home-service-card${unitPath ? ' home-service-card--link' : ''}`}
+                  role={unitPath ? 'link' : undefined}
+                  tabIndex={unitPath ? 0 : undefined}
+                  aria-label={unitPath ? `Open ${service.title} details` : undefined}
+                  onClick={
+                    unitPath
+                      ? () => {
+                          navigate(unitPath)
+                        }
+                      : undefined
+                  }
+                  onKeyDown={
+                    unitPath
+                      ? (event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault()
+                            navigate(unitPath)
+                          }
+                        }
+                      : undefined
+                  }
+                >
+                  <img src={service.image} alt={service.title} />
+                  <div>
+                    <h3>{service.title}</h3>
+                    <p>{service.text}</p>
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -277,15 +306,6 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="members-actions">
-            <Link
-              to="/"
-              className="members-btn"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              View All Members
-            </Link>
-          </div>
         </div>
       </section>
 

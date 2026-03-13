@@ -14,6 +14,9 @@ import Pricing from './pages/Pricing.jsx'
 import Faq from './pages/Faq.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import CeoMessage from './pages/CeoMessage.jsx'
+import Unit1 from './pages/Unit1.jsx'
+import Unit2 from './pages/Unit2.jsx'
+import Unit3 from './pages/Unit3.jsx'
 
 export default function App() {
   return (
@@ -28,6 +31,9 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/unit-1" element={<Unit1 />} />
+          <Route path="/unit-2" element={<Unit2 />} />
+          <Route path="/unit-3" element={<Unit3 />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/not-found" element={<NotFoundPage />} />
