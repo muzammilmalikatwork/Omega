@@ -59,6 +59,14 @@
   font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  height: 85px;
+  width: 100px;
+  display: block;
 }
 
 .menu-toggle {
@@ -1095,6 +1103,36 @@
 .footer-grid a {
   color: #c9d8c8;
   text-decoration: none;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-socials a svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-socials a:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .copyright {

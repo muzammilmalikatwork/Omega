@@ -48,6 +48,12 @@ const socialIcons = {
   ),
 }
 
+const socialLinks = {
+  facebook: 'https://www.facebook.com/',
+  instagram: 'https://www.instagram.com/',
+  twitter: 'https://twitter.com/',
+}
+
 const teamLogos = [
   { label: 'Chicken Farm', image: brandLogo1 },
   { label: 'Milk Farm', image: brandLogo2 },
@@ -95,7 +101,13 @@ export default function Team() {
                 <p>{member.role}</p>
                 <div className="team-showcase-socials">
                   {Object.entries(socialIcons).map(([key, icon]) => (
-                    <a key={key} href="#" aria-label={`${member.name} ${key}`}>
+                    <a
+                      key={key}
+                      href={socialLinks[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${member.name} ${key}`}
+                    >
                       {icon}
                     </a>
                   ))}

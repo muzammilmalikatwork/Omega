@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import omegaLogo from '../../image/Om.jpg'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -26,7 +27,7 @@ export default function Header() {
       <nav className="main-nav">
         <div className="site-container nav-inner">
           <Link to="/" className="brand" onClick={closeMenu}>
-            Omega
+            <img src={omegaLogo} alt="Omega Farm" />
           </Link>
 
           <button
