@@ -1,100 +1,52 @@
-import { Link } from 'react-router-dom'
 import useDatabaseImages from '../../hooks/media/useDatabaseImages.jsx'
-
-
-
-
-const steps = [
-  {
-    title: 'Planning And Forecasting',
-    text: 'We map seasonal demand, production goals, and operational timelines before execution.',
-  },
-  {
-    title: 'Quality-Centered Operations',
-    text: 'Every stage includes checks for hygiene, freshness, and process consistency.',
-  },
-  {
-    title: 'Reliable Delivery',
-    text: 'Structured logistics ensure timely dispatch and stable supply for recurring clients.',
-  },
-]
-
-const brands = ['AgriCorp', 'Farmline', 'GreenMart', 'DairyHub', 'HarvestCo', 'FreshNest']
 
 export default function CeoMessage() {
   const images = useDatabaseImages()
-  const aboutImageUrl = images['about.jpg']
-  const aboutHeroImageUrl = images['about1.jpeg']
-  const stepsImageUrl = images['services.jpg']
+  const ceoImageUrl = images['team1.jpeg'] || images['team.webp'] || images['about.jpg']
 
   return (
-    <div className="about-template">
-      <section
-        className="services-breadcrumb about-breadcrumb"
-        style={{ backgroundImage: aboutHeroImageUrl ? `url(${aboutHeroImageUrl})` : undefined }}
-      >
-        <div className="site-container services-breadcrumb-inner">
-          <h1>CEO Message</h1>
-          <div className="services-crumb-pill" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>|</span>
-            <span>CEO Message</span>
-          </div>
-        </div>
-      </section>
+    <div className="ceo-message-page">
+      <section className="section ceo-message-section">
+        <div className="site-container">
+          <article className="ceo-message-card">
+            <div className="ceo-message-copy">
+              <p className="ceo-message-kicker">CEO MESSAGE</p>
+              <h2>Welcome to our company.</h2>
+              <span className="ceo-message-rule" aria-hidden="true" />
 
-      <section className="section">
-        <div className="site-container about-template-intro">
-          <div>
-            <p className="section-tag">CEO Message</p>
-        
-            <p>
-              Driven by our vision of “Aghaz-e-Pakistan”, Omega Dairy is committed to expanding production capacity and aims to achieve 300,000 litres of milk per day, 
-              contributing to the growth and modernization of Pakistan’s dairy industry.
-            </p>
-            <p>
-              At Omega Dairy, we are building the future of dairy farming through advanced technology, automation, and a strong commitment to food safety and quality. 
-              Our operations are designed around modern dairy management systems, industrial-scale efficiency, 
-              and sustainable farming practices.
-            </p>
-          </div>
-          <div className="about-template-image-wrap">
-            <img src={aboutImageUrl || ''} alt="About Omega" />
-            <button type="button" className="about-play-badge" aria-label="Play intro video">
-              â–¶
-            </button>
-          </div>
-        </div>
-      </section>
+              <p>
+                At the heart of Omega Dairy is a commitment to quality, innovation, and trust. Since the beginning,
+                our goal has been simple: to deliver reliable solutions that create real value for our clients while
+                maintaining the highest standards of service.
+              </p>
+              <p>
+                We understand that every customer has unique needs. That is why we focus on providing tailored
+                solutions that not only meet expectations but exceed them. Our team works with dedication, integrity,
+                and a strong sense of responsibility to ensure every project is handled with care and precision.
+              </p>
+              <p>
+                As we continue to grow, we remain focused on building long-term relationships, embracing new
+                technologies, and improving our services to serve you better. Your trust motivates us to keep pushing
+                forward and setting higher benchmarks.
+              </p>
+              <p className="ceo-message-thanks">Thank you for choosing us and being part of our journey.</p>
 
-
-      <section className="section">
-        <div className="site-container about-template-steps">
-          <img src={stepsImageUrl || ''} alt="How we work" />
-          <div>
-            <p className="section-tag">Our Steps</p>
-            <h2>How We Work On Quality</h2>
-            <div className="about-step-list">
-              {steps.map((step) => (
-                <article key={step.title} className="about-step-item">
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </article>
-              ))}
+              <div className="ceo-message-signoff">
+                <span className="ceo-message-signature" aria-hidden="true">
+                  John Doe
+                </span>
+                <strong>John Doe</strong>
+                <span>Chief Executive Officer</span>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-
-      <section className="section services-brand-strip">
-        <div className="site-container services-brand-row">
-          {brands.map((brand) => (
-            <span key={brand}>{brand}</span>
-          ))}
+            <div className="ceo-message-visual">
+              <img src={ceoImageUrl || ''} alt="Chief Executive Officer" />
+            
+            </div>
+          </article>
         </div>
       </section>
     </div>
   )
 }
-

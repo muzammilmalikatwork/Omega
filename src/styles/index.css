@@ -12,9 +12,16 @@ body,
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
   line-height: 1.55;
-  background: #fff;
+  background:
+    radial-gradient(circle at top left, rgba(242, 191, 75, 0.12), transparent 24%),
+    radial-gradient(circle at top right, rgba(62, 125, 70, 0.08), transparent 28%),
+    #fff;
 }

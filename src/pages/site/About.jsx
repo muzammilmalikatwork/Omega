@@ -93,11 +93,7 @@ export default function About() {
       >
         <div className="site-container services-breadcrumb-inner">
           <h1>About Us</h1>
-          <div className="services-crumb-pill" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>|</span>
-            <span>About Us</span>
-          </div>
+          
         </div>
       </section>
 
@@ -141,9 +137,10 @@ export default function About() {
             </div>
             <div className="about-template-image-wrap">
               <img src={aboutImageUrl || ''} alt="About Omega" />
-              <button type="button" className="about-play-badge" aria-label="Play intro video">
-                &#9654;
-              </button>
+              <div className="about-play-badge" aria-label="Omega Dairy established in 2021" role="note">
+                <strong>Since</strong>
+                <span>2021</span>
+              </div>
             </div>
           </div>
           <div className="about-template-followup">

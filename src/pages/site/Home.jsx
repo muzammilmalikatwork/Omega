@@ -304,7 +304,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section members-showcase">
         <div className="site-container">
           <div className="section-heading center">
             <p className="members-kicker">OUR MEMBERS</p>

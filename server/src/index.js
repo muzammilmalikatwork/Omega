@@ -496,6 +496,30 @@ app.get('/api/posts', async (req, res) => {
   }
 })
 
+app.get('/api/posts/:id', async (req, res) => {
+  const postId = req.params.id
+
+  try {
+    const [rows] = await pool.execute(
+      'SELECT id, title, excerpt, image_url, published_at, created_at FROM posts WHERE id = ? LIMIT 1',
+      [postId]
+    )
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Post not found.' })
+    }
+
+    const [recentRows] = await pool.execute(
+      'SELECT id, title, excerpt, image_url, published_at, created_at FROM posts ORDER BY published_at DESC, id DESC LIMIT 4'
+    )
+
+    return res.json({ success: true, post: rows[0], recentPosts: recentRows })
+  } catch (error) {
+    console.error('Post detail error:', error)
+    return res.status(500).json({ error: 'Unable to fetch post.' })
+  }
+})
+
 app.get('/api/members', async (req, res) => {
   try {
     const [rows] = await pool.execute(

@@ -3,6 +3,21 @@ import { useState } from 'react'
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('')
+  const [errors, setErrors] = useState({})
+
+  const validate = () => {
+    const nextErrors = {}
+
+    if (!formData.name.trim()) nextErrors.name = 'Please enter your full name.'
+    if (!formData.email.trim()) {
+      nextErrors.email = 'Please enter your email address.'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      nextErrors.email = 'Please enter a valid email address.'
+    }
+    if (!formData.message.trim()) nextErrors.message = 'Please enter your message.'
+
+    return nextErrors
+  }
 
   const handleChange = (event) => {
     const { id, value } = event.target
@@ -10,10 +25,24 @@ export default function Contact() {
       ...current,
       [id]: value,
     }))
+    setErrors((current) => {
+      if (!current[id]) return current
+      const next = { ...current }
+      delete next[id]
+      return next
+    })
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    const nextErrors = validate()
+    setErrors(nextErrors)
+
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus('Please fix the highlighted fields and try again.')
+      return
+    }
+
     setStatus('Sending message...')
 
     try {
@@ -58,7 +87,10 @@ export default function Contact() {
               placeholder="Your full name"
               value={formData.name}
               onChange={handleChange}
+              required
+              aria-invalid={errors.name ? 'true' : 'false'}
             />
+            {errors.name && <p className="form-error">{errors.name}</p>}
 
             <label htmlFor="email">Email Address</label>
             <input
@@ -67,7 +99,10 @@ export default function Contact() {
               placeholder="name@example.com"
               value={formData.email}
               onChange={handleChange}
+              required
+              aria-invalid={errors.email ? 'true' : 'false'}
             />
+            {errors.email && <p className="form-error">{errors.email}</p>}
 
             <label htmlFor="message">Message</label>
             <textarea
@@ -76,7 +111,10 @@ export default function Contact() {
               placeholder="How can we help?"
               value={formData.message}
               onChange={handleChange}
+              required
+              aria-invalid={errors.message ? 'true' : 'false'}
             />
+            {errors.message && <p className="form-error">{errors.message}</p>}
 
             <button className="btn btn-primary" type="submit">
               Submit Now

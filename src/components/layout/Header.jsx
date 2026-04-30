@@ -47,7 +47,7 @@ export default function Header() {
     }
   }, [])
 
-  const aboutActive = ['/about', '/ceo-message'].includes(location.pathname)
+  const aboutActive = location.pathname === '/about'
   const pagesActive = ['/gallery', '/team', '/pricing', '/faq', '/not-found'].includes(location.pathname)
   const brandLogo = imageUrls['Om.jpg'] || imageUrls['Omega.png'] || ''
 
@@ -163,16 +163,13 @@ export default function Header() {
               Home
             </NavLink>
 
-            <div className="nav-dropdown">
-              <NavLink to="/about" className={`nav-dropdown-toggle ${aboutActive ? 'active' : ''}`} onClick={closeMenu}>
-                About Us
-              </NavLink>
-              <div className="dropdown-menu">
-                <NavLink to="/ceo-message" onClick={closeMenu}>
-                  CEO Message
-                </NavLink>
-              </div>
-            </div>
+            <NavLink to="/about" className={aboutActive ? 'active' : ''} onClick={closeMenu}>
+              About Us
+            </NavLink>
+
+            <NavLink to="/ceo-message" onClick={closeMenu}>
+              CEO Message
+            </NavLink>
 
             <NavLink to="/services" onClick={closeMenu}>
               Services

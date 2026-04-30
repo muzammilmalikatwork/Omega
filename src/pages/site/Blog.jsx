@@ -15,6 +15,7 @@ export default function Blog() {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [query, setQuery] = useState('')
   const images = useDatabaseImages()
   const blogHeroImageUrl = images['about1.jpeg']
 
@@ -37,6 +38,12 @@ export default function Blog() {
     loadPosts()
   }, [])
 
+  const normalizedQuery = query.trim().toLowerCase()
+  const filteredPosts = posts.filter((post) => {
+    if (!normalizedQuery) return true
+    return [post.title, post.excerpt].some((value) => String(value || '').toLowerCase().includes(normalizedQuery))
+  })
+
   return (
     <>
       <section
@@ -45,11 +52,6 @@ export default function Blog() {
       >
         <div className="site-container services-breadcrumb-inner">
           <h1>Blog</h1>
-          <div className="services-crumb-pill" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>|</span>
-            <span>Blog</span>
-          </div>
         </div>
       </section>
 
@@ -58,8 +60,11 @@ export default function Blog() {
           <div className="blog-feed" aria-label="Blog posts">
             {loading && <p>Loading posts...</p>}
             {error && <p>{error}</p>}
-            {!loading && posts.length === 0 && <p>No posts found yet.</p>}
-            {posts.map((post) => (
+            {!loading && !error && posts.length === 0 && <p>No posts found yet.</p>}
+            {!loading && !error && posts.length > 0 && filteredPosts.length === 0 && (
+              <p>No posts match your search.</p>
+            )}
+            {filteredPosts.map((post) => (
               <article key={post.id} className="blog-entry">
                 {post.image_url && <img src={post.image_url} alt={post.title} loading="lazy" />}
 
@@ -71,9 +76,9 @@ export default function Blog() {
                   <h2 className="blog-entry-title">{post.title}</h2>
                   <p className="blog-entry-excerpt">{post.excerpt}</p>
 
-                  <button className="blog-readmore" type="button">
+                  <Link className="blog-readmore" to={`/blog/${post.id}`}>
                     Read More
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -83,8 +88,16 @@ export default function Blog() {
             <div className="blog-widget">
               <h3>Search</h3>
               <form className="blog-search" onSubmit={(event) => event.preventDefault()}>
-                <input type="search" placeholder="Search..." aria-label="Search posts" />
-                <button type="submit">Search</button>
+                <input
+                  type="search"
+                  placeholder="Search..."
+                  aria-label="Search posts"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                />
+                <button type="submit" aria-label="Search posts">
+                  Search
+                </button>
               </form>
             </div>
 
@@ -105,10 +118,12 @@ export default function Blog() {
               <ul className="blog-recent">
                 {posts.slice(0, 3).map((post) => (
                   <li key={post.id}>
-                    <span className="blog-recent-title">{post.title}</span>
-                    <span className="blog-recent-date">
-                      {new Date(post.published_at).toLocaleDateString()}
-                    </span>
+                    <Link className="blog-recent-link" to={`/blog/${post.id}`}>
+                      <span className="blog-recent-title">{post.title}</span>
+                      <span className="blog-recent-date">
+                        {new Date(post.published_at).toLocaleDateString()}
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -130,4 +145,3 @@ export default function Blog() {
     </>
   )
 }
-

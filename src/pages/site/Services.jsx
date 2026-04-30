@@ -95,12 +95,7 @@ export default function Services() {
         style={{ backgroundImage: servicesHeroImageUrl ? `url(${servicesHeroImageUrl})` : undefined }}
       >
         <div className="site-container services-breadcrumb-inner">
-          <h1>Service</h1>
-          <div className="services-crumb-pill" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span>|</span>
-            <span>Service</span>
-          </div>
+          <h1>Services</h1>
         </div>
       </section>
 
@@ -126,7 +121,7 @@ export default function Services() {
               <h2>What We Provide</h2>
             </div>
             <Link to="/contact" className="btn btn-primary">
-              View All Services
+              Contact About Services
             </Link>
           </div>
 
