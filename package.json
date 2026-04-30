@@ -5,11 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:backend": "node server/src/index.js",
+    "reset-password": "node server/scripts/resetPassword.js",
+    "create-admin": "node server/scripts/createAdminUser.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.1",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1"
@@ -28,5 +36,18 @@
   },
   "overrides": {
     "vite": "^8.0.0-beta.13"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muzammilmalikatwork/Omega.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muzammilmalikatwork/Omega/issues"
+  },
+  "homepage": "https://github.com/muzammilmalikatwork/Omega#readme"
 }

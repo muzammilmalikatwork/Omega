@@ -13,6 +13,20 @@ The React Compiler is enabled on this template. See [this documentation](https:/
 
 Note: This will impact Vite dev & build performances.
 
+## Deployment note (assets/images)
+
+This project sets Vite `base: './'` so built assets (including images) load correctly when deployed under a subpath or opened directly from `dist/`.
+
+## Node backend
+
+A simple Node.js backend is included in `server/src/index.js`.
+
+- Run frontend: `npm run dev`
+- Run backend: `npm run dev:backend`
+- The contact form submits to `/api/contact` and is proxied to the backend during development.
+- The backend expects a MySQL server. Configure `DATABASE_URL` via `.env` (default: `mysql://root:123456@127.0.0.1:3306/OmegaDB`).
+- Check `GET /api/status` for backend + database status (when DB is down, DB-backed routes return `503` instead of crashing).
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
