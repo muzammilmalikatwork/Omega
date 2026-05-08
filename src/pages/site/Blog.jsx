@@ -56,7 +56,8 @@ export default function Blog() {
       </section>
 
       <section className="section">
-        <div className="site-container blog-layout">
+        <div className="site-container public-page-shell">
+          <div className="blog-layout">
           <div className="blog-feed" aria-label="Blog posts">
             {loading && <p>Loading posts...</p>}
             {error && <p>{error}</p>}
@@ -140,6 +141,7 @@ export default function Blog() {
               </div>
             </div>
           </aside>
+          </div>
         </div>
       </section>
     </>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import '../styles/App.css'
 import Footer from '../components/layout/Footer.jsx'
@@ -26,6 +26,47 @@ import Unit3 from '../pages/site/Unit3.jsx'
 export default function App() {
   const location = useLocation()
   const isAdminRoute = location.pathname.startsWith('/admin')
+  const siteRef = useRef(null)
+
+  useEffect(() => {
+    if (isAdminRoute) return undefined
+
+    const root = siteRef.current
+    if (!root) return undefined
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    root.style.setProperty('--site-pointer-x', '50%')
+    root.style.setProperty('--site-pointer-y', '18%')
+
+    if (reduceMotion) return undefined
+
+    let frame = 0
+
+    const updatePointer = (event) => {
+      if (frame) window.cancelAnimationFrame(frame)
+      frame = window.requestAnimationFrame(() => {
+        const rect = root.getBoundingClientRect()
+        const x = ((event.clientX - rect.left) / rect.width) * 100
+        const y = ((event.clientY - rect.top) / rect.height) * 100
+        root.style.setProperty('--site-pointer-x', `${Math.max(0, Math.min(100, x))}%`)
+        root.style.setProperty('--site-pointer-y', `${Math.max(0, Math.min(100, y))}%`)
+      })
+    }
+
+    const resetPointer = () => {
+      root.style.setProperty('--site-pointer-x', '50%')
+      root.style.setProperty('--site-pointer-y', '18%')
+    }
+
+    window.addEventListener('pointermove', updatePointer, { passive: true })
+    window.addEventListener('pointerleave', resetPointer)
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame)
+      window.removeEventListener('pointermove', updatePointer)
+      window.removeEventListener('pointerleave', resetPointer)
+    }
+  }, [isAdminRoute])
 
   useEffect(() => {
     if (isAdminRoute) return undefined
@@ -59,10 +100,14 @@ export default function App() {
       '.about-template-testimonial-grid > *',
       '.about-template-team-grid > *',
       '.about-step-list > *',
+      '.about-template-story > *',
       '.unit-members-grid > *',
       '.unit-gallery-grid > *',
       '.members-grid > *',
       '.pricing-showcase-grid > *',
+      '.services-template-row > *',
+      '.gallery-filter-row > *',
+      '.services-template-head > *',
       '.team-showcase-grid > *',
     ]
 
@@ -109,8 +154,18 @@ export default function App() {
   }, [isAdminRoute, location.pathname])
 
   return (
-    <div className="omega-site">
+    <div ref={siteRef} className="omega-site">
       <ScrollToTop />
+      {!isAdminRoute && (
+        <div className="site-vfx" aria-hidden="true">
+          <span className="site-vfx-spotlight" />
+          <span className="site-vfx-orb site-vfx-orb--gold" />
+          <span className="site-vfx-orb site-vfx-orb--green" />
+          <span className="site-vfx-grid" />
+          <span className="site-vfx-beam site-vfx-beam--one" />
+          <span className="site-vfx-beam site-vfx-beam--two" />
+        </div>
+      )}
       <Header />
       <main className="site-main">
         <div key={location.pathname} className="route-stage">

@@ -1,7 +1,75 @@
-import { useEffect, useRef, useState } from 'react'
+import { Component, Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import useDatabaseImages from '../../hooks/media/useDatabaseImages.jsx'
 
+const LazyLanyard = lazy(() => import('../common/Lanyard.jsx'))
+
+class LanyardErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error) {
+    console.error('Lanyard disabled after a render error:', error)
+  }
+
+  render() {
+    if (this.state.hasError) return null
+    return this.props.children
+  }
+}
+
+function HeaderLanyard() {
+  const [shouldRender, setShouldRender] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const update = () => {
+      const desktopWidth = window.innerWidth >= 980
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      setShouldRender(desktopWidth && canHover && !mediaQuery.matches)
+    }
+
+    update()
+    mediaQuery.addEventListener('change', update)
+    window.addEventListener('resize', update)
+
+    return () => {
+      mediaQuery.removeEventListener('change', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  if (!shouldRender) return null
+
+  return (
+    <LanyardErrorBoundary>
+      <Suspense fallback={null}>
+        <LazyLanyard />
+      </Suspense>
+    </LanyardErrorBoundary>
+  )
+}
+
+function getPreferredImageUrl(imageUrls, preferredNames) {
+  for (const name of preferredNames) {
+    if (imageUrls[name]) return imageUrls[name]
+  }
+
+  const entries = Object.entries(imageUrls)
+  for (const preferredName of preferredNames) {
+    const match = entries.find(([imageName]) => imageName.toLowerCase() === preferredName.toLowerCase())
+    if (match) return match[1]
+  }
+
+  return ''
+}
 
 export default function Header() {
   const imageUrls = useDatabaseImages()
@@ -49,7 +117,7 @@ export default function Header() {
 
   const aboutActive = location.pathname === '/about'
   const pagesActive = ['/gallery', '/team', '/pricing', '/faq', '/not-found'].includes(location.pathname)
-  const brandLogo = imageUrls['Om.jpg'] || imageUrls['Omega.png'] || ''
+  const brandLogo = getPreferredImageUrl(imageUrls, ['logo.png', 'Om.jpg', 'Omega.png'])
 
   const closeMenu = () => {
     setOpen(false)
@@ -135,16 +203,22 @@ export default function Header() {
     <>
       <header className="topbar">
         <div className="site-container topbar-inner">
-          <p>Omega Farm | Natural agriculture and dairy solutions</p>
-          <a href="tel:+923001112233">Call Us: +92-3065230410</a>
+          <p>Omega Dairy Pvt. Ltd. | Precision agriculture and premium dairy operations</p>
+          <div className="topbar-actions">
+            <span>Karachi, Pakistan</span>
+            <a href="tel:+923001112233">+92-3065230410</a>
+          </div>
         </div>
       </header>
 
       <nav ref={navRef} className={`main-nav ${navHidden ? 'is-hidden' : ''}`}>
         <div className="site-container nav-inner">
-          <Link to="/" className="brand" onClick={closeMenu}>
-            {brandLogo ? <img src={brandLogo} alt="Omega" /> : 'Omega'}
-          </Link>
+          <div className="brand-with-lanyard">
+            <Link to="/" className="brand" onClick={closeMenu}>
+              {brandLogo ? <img src={brandLogo} alt="Omega" /> : 'Omega'}
+            </Link>
+            <HeaderLanyard />
+          </div>
 
           <button
             className="menu-toggle"
@@ -219,12 +293,13 @@ export default function Header() {
             </NavLink>
           </div>
 
-          <Link to="/contact" className="btn btn-accent" onClick={closeMenu}>
-            Get A Quote
-          </Link>
+          <div className="nav-cta-group">
+            <Link to="/contact" className="btn btn-accent" onClick={closeMenu}>
+              Let&apos;s Talk
+            </Link>
+          </div>
         </div>
       </nav>
     </>
   )
 }
-

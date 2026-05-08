@@ -33,58 +33,64 @@ const socialIcons = {
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="site-container footer-grid">
-        <div>
-          <h3>Omega</h3>
-          <p>
-            Modern agriculture and dairy farm solutions with a focus on quality, sustainability, and trusted supply.
-          </p>
-        </div>
+      <div className="site-container footer-shell">
+        <div className="footer-grid">
+          <div className="footer-brand-block footer-about">
+            <p className="footer-mini">Omega Dairy Pvt. Ltd.</p>
+            <p>
+              A future-focused dairy and agriculture company delivering quality systems, reliable production, and trusted supply partnerships across Pakistan.
+            </p>
+          </div>
 
-        <div>
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <Link to="/about">About Us</Link>
-            </li>
-            <li>
-              <Link to="/services">Services</Link>
-            </li>
-            <li>
-              <Link to="/gallery">Pages</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li>
+                <Link to="/services">Services</Link>
+              </li>
+              <li>
+                <Link to="/gallery">Gallery</Link>
+              </li>
+              <li>
+                <Link to="/team">Team</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          </div>
 
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li> G 4/9 Block 9 Scheme 9 Clifton-Karachi.</li>
-            <li> +92-2135867726</li>
-            <li>info@omegadairy.com.pk</li>
-          </ul>
+          <div>
+            <h4>Reach Us</h4>
+            <ul>
+              <li>G 4/9 Block 9 Scheme 9 Clifton, Karachi</li>
+              <li>+92-2135867726</li>
+              <li>info@omegadairy.com.pk</li>
+            </ul>
 
-          <div className="footer-socials" aria-label="Social links">
-            {Object.entries(socialIcons).map(([key, icon]) => (
-              <a
-                key={key}
-                href={socialLinks[key]}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={key}
-              >
-                {icon}
-              </a>
-            ))}
+            <div className="footer-socials" aria-label="Social links">
+              {Object.entries(socialIcons).map(([key, icon]) => (
+                <a
+                  key={key}
+                  href={socialLinks[key]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={key}
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
       <div className="copyright">
         <div className="site-container">
-          <p>Copyright {new Date().getFullYear()} Omega Farm. All rights reserved.</p>
+          <p>Copyright {new Date().getFullYear()} Omega Dairy Pvt. Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

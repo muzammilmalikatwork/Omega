@@ -89,7 +89,8 @@ export default function Team() {
       </section>
 
       <section className="section">
-        <div className="site-container cards-3 team-showcase-grid">
+        <div className="site-container public-page-shell">
+          <div className="cards-3 team-showcase-grid">
           {teamMembers.map((member) => (
             <article key={member.name} className="team-showcase-card">
               <img
@@ -117,11 +118,12 @@ export default function Team() {
               </div>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
       <section className="section gallery-brand-strip team-brand-strip">
-        <div className="site-container team-brand-row">
+        <div className="site-container public-page-shell team-brand-row">
           {visibleTeamLogos.map((item, index) => (
             <article key={`${item.label}-${index}`} className="gallery-brand-mark team-brand-mark">
               <img src={images[item.imageName] || ''} alt={item.label} />

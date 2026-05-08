@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *,
 *::before,
@@ -18,10 +18,10 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
   line-height: 1.55;
   background:
-    radial-gradient(circle at top left, rgba(242, 191, 75, 0.12), transparent 24%),
-    radial-gradient(circle at top right, rgba(62, 125, 70, 0.08), transparent 28%),
-    #fff;
+    radial-gradient(circle at top left, rgba(21, 169, 159, 0.09), transparent 24%),
+    radial-gradient(circle at top right, rgba(21, 169, 159, 0.06), transparent 28%),
+    #f7fbfb;
 }

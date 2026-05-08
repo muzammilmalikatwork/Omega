@@ -5,6 +5,7 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '', remember: false })
   const [status, setStatus] = useState('')
   const navigate = useNavigate()
+  const statusIsError = status && !/success|signed in|welcome/i.test(status)
 
   const handleChange = (event) => {
     const { id, value, type, checked } = event.target
@@ -69,16 +70,51 @@ export default function Login() {
   }
 
   return (
-    <section className="login-page">
+    <section className="login-page login-page--elegant">
       <div className="site-container login-grid">
-        <div className="login-panel">
-          <div className="login-brand">Farm</div>
+        <div className="login-visual login-visual--editorial">
+          <div className="login-visual-overlay" />
+          <div className="login-visual-shell">
+            <div className="login-brand-mark">Omega Dairy</div>
+            <div className="login-visual-copy">
+              <p className="login-kicker">Private Member Access</p>
+              <h1>Sign in to your account with a calmer, cleaner workspace.</h1>
+              <p>
+                Track your activity, manage supply communication, and keep your Omega experience
+                connected to the farm in one refined dashboard.
+              </p>
+            </div>
+
+            <div className="login-visual-highlights">
+              <article>
+                <strong>160,000L</strong>
+                <span>Daily premium milk production capacity</span>
+              </article>
+              <article>
+                <strong>3 Units</strong>
+                <span>Agriculture, dairy processing, and livestock care</span>
+              </article>
+            </div>
+
+            <div className="login-visual-card">
+              <p className="login-visual-card-label">Member benefits</p>
+              <ul>
+                <li>Secure account access for admins and users</li>
+                <li>Faster updates across farm operations and supply flow</li>
+                <li>Consistent access to the latest Omega website features</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="login-panel login-panel--elegant">
+          <div className="login-panel-top">
+            <div className="login-brand">Omega Access</div>
+            <Link to="/" className="login-back-link">Back to website</Link>
+          </div>
+
           <div className="login-copy">
-            <h1>Start Your Day Fresh</h1>
-            <p>
-              Manage your deliveries and explore fresh dairy products, customize orders,
-              update preferences, and enjoy farm-to-door freshness from our eco-conscious local farm.
-            </p>
+            <h2 className="login-eyebrow">Welcome back</h2>
           </div>
 
           <form className="login-form" onSubmit={handleSubmit}>
@@ -87,7 +123,7 @@ export default function Login() {
               <input
                 id="email"
                 type="email"
-                placeholder="jane@gmail.com"
+                placeholder="name@example.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -125,14 +161,16 @@ export default function Login() {
               Sign in
             </button>
 
+            <div className="login-divider">
+              <span>Omega Dairy Private Portal</span>
+            </div>
+
             <p className="login-footer">
               Don&apos;t have an account? <Link to="/signup">Sign Up</Link>
             </p>
-            {status && <p className="login-status">{status}</p>}
+            {status && <p className={`login-status${statusIsError ? ' is-error' : ''}`}>{status}</p>}
           </form>
         </div>
-
-        <div className="login-visual" />
       </div>
     </section>
   )

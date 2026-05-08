@@ -15,49 +15,57 @@ const galleryItems = [
     title: 'Healthy Cattle Group',
     text: 'Well-nourished cattle under routine health management.',
     category: 'cattles',
-    imageName: 'cow.jpg',
+    imageName: 'cattlegroup.jpg',
+    fallbackImageName: 'cow.jpg',
   },
   {
     title: 'Modern Tractor Setup',
     text: 'Field-ready machinery configured for efficient farm operations.',
     category: 'equipment',
-    imageName: 'services.jpg',
+    imageName: 'tractorsetup.jpg',
+    fallbackImageName: 'services.jpg',
   },
   {
     title: 'Active Crop Field',
     text: 'Seasonal cultivation with planned irrigation and monitoring.',
     category: 'farming',
-    imageName: 'c.jpg',
+    imageName: 'activecropfeild.jpeg',
+    fallbackImageName: 'c.jpg',
   },
   {
     title: 'Organic Harvest Basket',
     text: 'Fresh organic produce collected and packed from local fields.',
     category: 'organic',
-    imageName: 'co.jpg',
+    imageName: 'organicharvestbasket.jpeg',
+    fallbackImageName: 'co.jpg',
   },
   {
     title: 'Dairy Cattle Care',
     text: 'Daily shelter maintenance and nutrition planning for dairy herds.',
     category: 'cattles',
-    imageName: 'about.jpg',
+    imageName: 'dailycattlecare.jpg',
+    fallbackImageName: 'about.jpg',
   },
   {
     title: 'Farm Equipment Maintenance',
     text: 'Preventive checks to keep tools and machines reliable in season.',
     category: 'equipment',
-    imageName: 'services.jpg',
+    imageName: 'farmequipmentmainteance.jpg',
+    fallbackImageName: 'services.jpg',
   },
   {
     title: 'Irrigation Monitoring',
     text: 'Water channels and growth patterns reviewed across farm plots.',
     category: 'farming',
-    imageName: 'about1.jpeg',
+    imageName: 'irrigationmonitoring.jpeg',
+    fallbackImageName: 'about1.jpeg',
   },
   {
     title: 'Organic Crop Sorting',
     text: 'Natural produce sorted for freshness and quality consistency.',
     category: 'organic',
-    imageName: 'co.jpg',
+    imageName: 'organiccropsorting.jpeg',
+    fallbackImageName: 'co.jpg',
   },
 ]
 
@@ -79,7 +87,7 @@ export default function Gallery() {
   const [brandTransitionEnabled, setBrandTransitionEnabled] = useState(true)
   const brandDragStartX = useRef(null)
   const images = useDatabaseImages()
-  const galleryHeroImage = images['about1.jpeg']
+  const galleryHeroImage = images['organicharvestbasket.jpeg'] || images['about1.jpeg']
 
   const filteredItems = useMemo(() => {
     if (activeFilter === 'all') return galleryItems
@@ -157,7 +165,7 @@ export default function Gallery() {
       </section>
 
       <section className="section">
-        <div className="site-container">
+        <div className="site-container public-page-shell">
           <div className="gallery-filter-row" role="tablist" aria-label="Gallery Categories">
             {filterOptions.map((option) => (
               <button
@@ -174,21 +182,23 @@ export default function Gallery() {
       </section>
 
       <section className="section">
-          <div className="site-container cards-3 page-cards">
+        <div className="site-container public-page-shell">
+          <div className="cards-3 page-cards">
           {filteredItems.map((item) => (
             <article key={item.title} className="service-card">
-              <img src={images[item.imageName] || ''} alt={item.title} />
+              <img src={images[item.imageName] || images[item.fallbackImageName] || ''} alt={item.title} />
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
             </article>
           ))}
+          </div>
         </div>
       </section>
 
       <section className="section gallery-brand-strip">
-        <div className="site-container">
+        <div className="site-container public-page-shell">
           <div
             className={`gallery-brand-viewport ${isDraggingBrands ? 'dragging' : ''}`}
             onPointerDown={handleBrandPointerDown}

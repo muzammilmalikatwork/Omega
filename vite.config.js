@@ -13,6 +13,7 @@ export default defineConfig({
       },
     }),
   ],
+  assetsInclude: ['**/*.glb'],
   server: {
     proxy: {
       // Prefer IPv4 loopback to avoid occasional IPv6/localhost resolution issues.

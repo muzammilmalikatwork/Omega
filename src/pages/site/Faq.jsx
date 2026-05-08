@@ -69,7 +69,8 @@ export default function Faq() {
       </section>
 
       <section className="section">
-        <div className="site-container faq-layout">
+        <div className="site-container public-page-shell public-page-shell--soft">
+          <div className="faq-layout">
           <div className="faq-media">
             <img src={faqMediaImage || ''} alt="Farmer holding fresh vegetables in field" />
             <button type="button" aria-label="Play video preview">
@@ -88,11 +89,12 @@ export default function Faq() {
               </details>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
       <section className="section gallery-brand-strip team-brand-strip">
-        <div className="site-container team-brand-row">
+        <div className="site-container public-page-shell team-brand-row">
           {visibleFaqLogos.map((item, index) => (
             <article key={`${item.label}-${index}`} className="gallery-brand-mark team-brand-mark">
               <img src={images[item.imageName] || ''} alt={item.label} />

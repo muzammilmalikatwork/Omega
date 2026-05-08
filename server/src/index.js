@@ -265,6 +265,8 @@ async function initDatabase() {
       status = VALUES(status),
       added_on = VALUES(added_on)
   `)
+
+  await uploadImagesFromFolder()
 }
 
 async function ensureUploadsDirectory() {

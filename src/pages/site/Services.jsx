@@ -5,32 +5,38 @@ const primaryServices = [
   {
     title: 'Agriculture Products',
     text: 'Seamlessly deliver quality-focused farm outputs with coordinated production and handling.',
-    imageName: 'c.jpg',
+    imageName: 'agrcultureproduct.jpeg',
+    fallbackImageName: 'c.jpg',
   },
   {
     title: 'Fresh Vegetables',
     text: 'Fresh seasonal vegetables prepared for homes, stores, and commercial kitchens.',
-    imageName: 'co.jpg',
+    imageName: 'organicveg.jpg',
+    fallbackImageName: 'co.jpg',
   },
   {
     title: 'Organic Products',
     text: 'Naturally grown produce with careful soil and water practices for cleaner food.',
-    imageName: 'about1.jpeg',
+    imageName: 'organicharvestbasket.jpeg',
+    fallbackImageName: 'about1.jpeg',
   },
   {
     title: 'Ecological Farming',
     text: 'Low-impact farming methods designed to preserve land quality over the long term.',
-    imageName: 'services.jpg',
+    imageName: 'ecologicalfarm.jpeg',
+    fallbackImageName: 'services.jpg',
   },
   {
     title: 'Dairy Products',
     text: 'Milk, butter, and related dairy processed with strict hygiene and freshness checks.',
-    imageName: 'about.jpg',
+    imageName: 'frehmilk.jpg',
+    fallbackImageName: 'about.jpg',
   },
   {
     title: 'Fresh Berries',
     text: 'Hand-selected berries handled for quality, texture, and timely market delivery.',
-    imageName: 'cow.jpg',
+    imageName: 'freshberries.jpg',
+    fallbackImageName: 'cow.jpg',
   },
 ]
 
@@ -38,22 +44,26 @@ const secondaryServices = [
   {
     title: 'Top Quality Milk Products',
     text: 'Consistent dairy quality managed with monitoring from milking to distribution.',
-    imageName: 'about.jpg',
+    imageName: 'frehmilk.jpg',
+    fallbackImageName: 'about.jpg',
   },
   {
     title: 'Natural Feeds For Cows',
     text: 'Balanced feed plans that support healthier livestock and better milk output.',
-    imageName: 'cow.jpg',
+    imageName: 'healthyfeed.jpg',
+    fallbackImageName: 'cow.jpg',
   },
   {
     title: 'Hand Milking Cow Milk',
     text: 'Traditional care with modern hygiene standards for cleaner daily supply.',
-    imageName: 'services.jpg',
+    imageName: 'handmilk.jpeg',
+    fallbackImageName: 'services.jpg',
   },
   {
     title: 'Healthy Herd Management',
     text: 'Routine veterinary checks and care planning to keep herds productive.',
-    imageName: 'about1.jpeg',
+    imageName: 'healthyherdmanagment.jpg',
+    fallbackImageName: 'about1.jpeg',
   },
 ]
 
@@ -86,7 +96,7 @@ const brands = [
 
 export default function Services() {
   const images = useDatabaseImages()
-  const servicesHeroImageUrl = images['services.jpg']
+  const servicesHeroImageUrl = images['ecologicalfarm.jpeg'] || images['services.jpg']
 
   return (
     <div className="services-template">
@@ -100,21 +110,23 @@ export default function Services() {
       </section>
 
       <section className="section">
-        <div className="site-container services-template-grid">
-          {primaryServices.map((service) => (
-            <article key={service.title} className="services-template-card">
-              <img src={images[service.imageName] || ''} alt={service.title} />
-              <div>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-              </div>
-            </article>
-          ))}
+        <div className="site-container services-template-shell">
+          <div className="services-template-grid">
+            {primaryServices.map((service) => (
+              <article key={service.title} className="services-template-card">
+                <img src={images[service.imageName] || images[service.fallbackImageName] || ''} alt={service.title} />
+                <div>
+                  <h3>{service.title}</h3>
+                  <p>{service.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section services-template-secondary">
-        <div className="site-container">
+        <div className="site-container services-template-shell services-template-shell--soft">
           <div className="services-template-head">
             <div>
               <p className="section-tag">Our Services</p>
@@ -128,7 +140,7 @@ export default function Services() {
           <div className="services-template-row">
             {secondaryServices.map((service) => (
               <article key={service.title} className="services-template-card small">
-                <img src={images[service.imageName] || ''} alt={service.title} />
+                <img src={images[service.imageName] || images[service.fallbackImageName] || ''} alt={service.title} />
                 <div>
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
@@ -140,33 +152,37 @@ export default function Services() {
       </section>
 
       <section className="section">
-        <div className="site-container services-template-faq">
-          <div>
-            {faqs.map((item, idx) => (
-              <details key={item.question} className="services-faq-item" open={idx === 0}>
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
-          </div>
-          <div className="services-faq-copy">
-            <p className="section-tag">Our FAQ</p>
-            <h2>Get every single answer here.</h2>
-            <p>
-              We keep our service model transparent so your team can plan procurement and delivery with confidence.
-            </p>
-            <p>
-              From product consistency to delivery timing, Omega operations are structured for recurring business needs.
-            </p>
+        <div className="site-container services-template-shell services-template-faq-shell">
+          <div className="services-template-faq">
+            <div>
+              {faqs.map((item, idx) => (
+                <details key={item.question} className="services-faq-item" open={idx === 0}>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+            <div className="services-faq-copy">
+              <p className="section-tag">Our FAQ</p>
+              <h2>Get every single answer here.</h2>
+              <p>
+                We keep our service model transparent so your team can plan procurement and delivery with confidence.
+              </p>
+              <p>
+                From product consistency to delivery timing, Omega operations are structured for recurring business needs.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="section services-brand-strip">
-        <div className="site-container services-brand-row">
-          {brands.map((brand) => (
-            <span key={brand}>{brand}</span>
-          ))}
+        <div className="site-container services-template-shell">
+          <div className="services-brand-row">
+            {brands.map((brand) => (
+              <span key={brand}>{brand}</span>
+            ))}
+          </div>
         </div>
       </section>
     </div>

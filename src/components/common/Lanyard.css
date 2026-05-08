@@ -1,0 +1,19 @@
+.lanyard-wrapper {
+  width: 110px;
+  height: 110px;
+  position: relative;
+  pointer-events: none;
+}
+
+.lanyard-wrapper canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .lanyard-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+}

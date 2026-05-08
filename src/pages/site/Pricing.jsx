@@ -65,7 +65,8 @@ export default function Pricing() {
       </section>
 
       <section className="section pricing-layout">
-        <div className="site-container pricing-showcase-grid">
+        <div className="site-container public-page-shell">
+          <div className="pricing-showcase-grid">
           {plans.map((plan) => (
             <article key={plan.name} className={`pricing-plan-card ${plan.featured ? 'featured' : ''}`}>
               <h3>{plan.name}</h3>
@@ -88,6 +89,7 @@ export default function Pricing() {
               </button>
             </article>
           ))}
+          </div>
         </div>
       </section>
     </>
