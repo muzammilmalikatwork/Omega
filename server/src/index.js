@@ -430,7 +430,7 @@ app.post('/api/login', async (req, res) => {
 
     res.cookie(SESSION_COOKIE_NAME, token, {
       httpOnly: true,
-      sameSite: 'lax',
+      sameSite: 'none',
       secure: false,
       maxAge: ttlMs,
       path: '/',
