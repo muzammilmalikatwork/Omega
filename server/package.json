@@ -1,0 +1,26 @@
+{
+  "name": "omega-backend",
+  "version": "1.0.0",
+  "description": "Omega Express backend API server",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "create-admin": "node scripts/createAdminUser.js",
+    "reset-password": "node scripts/resetPassword.js",
+    "upload-images": "node scripts/uploadImages.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.22.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
