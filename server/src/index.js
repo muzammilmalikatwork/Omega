@@ -317,7 +317,10 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
-app.use(cors({ origin: true, credentials: true }))
+app.use(cors({ 
+  origin: ['https://omegadairy.com.pk', 'http://omegadairy.com.pk', 'https://www.omegadairy.com.pk'],
+  credentials: true 
+}))
 app.use(express.json())
 app.use('/uploads', express.static(uploadsRoot))
 
