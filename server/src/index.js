@@ -11,7 +11,24 @@ import { fileURLToPath } from 'url'
 
 const app = express()
 const PORT = process.env.PORT || 4000
-const DATABASE_URL = process.env.DATABASE_URL || 'mysql://root:123456@127.0.0.1:3306/OmegaDB'
+function buildDatabaseUrlFromParts() {
+  const host = process.env.DB_HOST
+  const user = process.env.DB_USER
+  const password = process.env.DB_PASSWORD
+  const name = process.env.DB_NAME
+  const port = process.env.DB_PORT || '3306'
+
+  if (!host || !user || !name) return null
+
+  const encodedUser = encodeURIComponent(user)
+  const encodedPassword = encodeURIComponent(password || '')
+  return `mysql://${encodedUser}:${encodedPassword}@${host}:${port}/${name}`
+}
+
+const DATABASE_URL =
+  process.env.DATABASE_URL ||
+  buildDatabaseUrlFromParts() ||
+  'mysql://root:123456@127.0.0.1:3306/OmegaDB'
 const databaseName = new URL(DATABASE_URL).pathname.replace(/^\//, '')
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const uploadsRoot = path.join(__dirname, '..', 'uploads')
